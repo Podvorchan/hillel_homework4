@@ -1,6 +1,7 @@
 package ua.ithillel.podvorchan.model;
 
 public class Dog extends Animal {
+    private final String name;
     private static final int MAX_RUN = 500;
     private static final int MAX_SWIM = 10;
     public static int count;
@@ -27,5 +28,9 @@ public class Dog extends Animal {
         } else {
             System.out.println(name + " не может проплыть больше: " + MAX_SWIM + " метров.");
         }
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -18,6 +18,8 @@ public class Main {
         System.out.println("Всего животних: "+Animal.count);
         System.out.println("Всего собак: "+Dog.count);
         System.out.println("Всего кошек: "+Cat.count);
+       // System.out.println(bobik.getName());
+       // System.out.println(gosha.getName());
 
     }
 }

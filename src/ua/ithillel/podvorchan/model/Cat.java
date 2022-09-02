@@ -1,6 +1,7 @@
 package ua.ithillel.podvorchan.model;
 
 public class Cat extends Animal {
+    private final String name;
     private static final int MAX_RUN = 200;
     public static int count;
 
@@ -20,5 +21,9 @@ public class Cat extends Animal {
     @Override
     public void swim(int distance) {
         System.out.println(name + " не умеет плавать!");
+    }
+
+    public String getName() {
+        return name;
     }
 }

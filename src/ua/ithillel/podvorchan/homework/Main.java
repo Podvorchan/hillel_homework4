@@ -8,11 +8,14 @@ public class Main {
         System.out.println(findWordPosition("Aplle", "Plant"));
         System.out.println(stringReverse("Ruslan"));
         System.out.println(isPalindrome("Ruslan"));
-
-
     }
 
     static int findSymbolOccurance(String str, char c) {
+        if (str == null || c == '\0') {
+            System.out.println("There is empty parameter");
+            return 0;
+        }
+
         char[] charArray = str.toCharArray();
         int occurrences = 0;
         for (int i = 0; i < charArray.length; i++) {
@@ -37,12 +40,7 @@ public class Main {
     }
 
     static boolean isPalindrome(String str) {
-        for (int i = 0, j = str.length() - 1; i < j; i++, j--) {
-            if (str.charAt(i) != str.charAt(j)) {
-                return false;
-            }
-        }
-        return true;
-
+        return str.equalsIgnoreCase(stringReverse(str));
     }
+
 }

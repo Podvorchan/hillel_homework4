@@ -1,6 +1,6 @@
 package ua.ithillel.podvorchan;
 
-public class ArrayDataException extends Exception {
+public class ArrayDataException extends RuntimeException {
 
   public ArrayDataException(String message) {
     super(message);

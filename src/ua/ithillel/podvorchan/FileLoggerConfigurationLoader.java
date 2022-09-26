@@ -1,36 +1,51 @@
 package ua.ithillel.podvorchan;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.util.Properties;
+import ua.ithillel.podvorchan.api.ConfigurationLoadable;
+import ua.ithillel.podvorchan.enums.LoggingLevel;
+import ua.ithillel.podvorchan.enums.PropertiesForFile;
 
-public class FileLoggerConfigurationLoader {
+public class FileLoggerConfigurationLoader implements ConfigurationLoadable {
 
-  protected byte maxFileSize;
-  protected LoggingLevel currentLevel;
-  protected String newFile;
-  protected String format;
+ private FileLoggerConfiguration loader() {
+    FileLoggerConfiguration fileLoggerConfiguration = new FileLoggerConfiguration();
 
-  public FileLoggerConfiguration load(String configFile) {
-    try (FileReader fr = new FileReader(configFile);
-        BufferedReader br = new BufferedReader(fr)) {
-      String str;
-      while ((str = br.readLine()) != null) {
-        if (str.contains("FILE")) {
-          newFile = str.split(":")[1];
-        } else if (str.contains("LEVEL")) {
-          String lvl = str.split(":")[1];
-          currentLevel = LoggingLevel.valueOf(lvl);
-        } else if (str.contains("MAX-SIZE")) {
-          String size = str.split(":")[1];
-          maxFileSize = Byte.parseByte(size);
-        } else if (str.contains("FORMAT")) {
-          format = str.split(":")[1];
-        }
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
+    try (InputStream input = new FileInputStream
+        ("src/ua/ithillel/podvorchan/resourse/logConfig.properties")) {
+
+      Properties properties = new Properties();
+
+      properties.load(input);
+
+      fileLoggerConfiguration.fileName = properties.getProperty(
+          String.valueOf(PropertiesForFile.FILE));
+
+      fileLoggerConfiguration.loggingLevel = LoggingLevel.valueOf(properties.getProperty(
+          String.valueOf(PropertiesForFile.LEVEL)));
+
+      fileLoggerConfiguration.setFileSize(Integer.parseInt(properties.getProperty(
+          String.valueOf(PropertiesForFile.MAX_SIZE))));
+
+      String template = properties.getProperty(String.valueOf(PropertiesForFile.FORMAT));
+
+      fileLoggerConfiguration.recordingFormat = String.format(template, LocalDateTime.now(),
+          fileLoggerConfiguration.loggingLevel);
+
+
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
-    return new FileLoggerConfiguration(currentLevel, maxFileSize, newFile, format);
+
+    return fileLoggerConfiguration;
   }
+
+  public FileLoggerConfiguration load() {
+    return loader();
+  }
+
 }

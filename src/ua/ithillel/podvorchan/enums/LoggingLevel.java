@@ -1,4 +1,4 @@
-package ua.ithillel.podvorchan;
+package ua.ithillel.podvorchan.enums;
 
 public enum LoggingLevel {
   INFO,

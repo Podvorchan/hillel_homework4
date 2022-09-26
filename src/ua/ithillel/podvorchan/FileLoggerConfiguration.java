@@ -1,46 +1,30 @@
 package ua.ithillel.podvorchan;
 
 
-import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class FileLoggerConfiguration {
+import ua.ithillel.podvorchan.enums.LoggingLevel;
 
-  private final File file;
-  private final LoggingLevel loggingLevel;
-  private final byte maxSize;
-  private LocalDateTime localDateTime;
-  static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yy hh:mm");
+public class FileLoggerConfiguration extends LoggerConfiguration {
 
-  public FileLoggerConfiguration(LoggingLevel loggingLevel, byte maxSize, String file1,
-      String format) {
-    this.file = new File("homework" + file1);
-    this.loggingLevel = loggingLevel;
-    this.maxSize = maxSize;
-    format = String.format("%s %s  Message:", localDateTime, loggingLevel);
+  private int fileSize = 256;
+
+  public FileLoggerConfiguration() {
   }
 
-  public FileLoggerConfiguration(LoggingLevel loggingLevel, byte maxSize, String file1) {
-    this.file = new File("homework" + file1);
-    this.loggingLevel = loggingLevel;
-    this.maxSize = maxSize;
+  public FileLoggerConfiguration(String fileName, LoggingLevel loggingLevel) {
+    super(fileName, loggingLevel);
   }
 
-  public File getFile() {
-    return file;
+  public int getFileSize() {
+    return fileSize;
   }
 
-  public LoggingLevel getLoggingLevel() {
-    return loggingLevel;
-  }
+  public void setFileSize(int fileSize) {
+    if (fileSize < 1) {
+      this.fileSize = 256;
+      System.out.println("Incorrect file size (256)");
+    }
 
-  public byte getMaxSize() {
-    return maxSize;
-  }
-
-  public static String format(String message, LoggingLevel loggingLevel) {
-    return LocalDateTime.now().format(dateTimeFormatter) + " " + loggingLevel +
-        " Message: " + message;
+    this.fileSize = fileSize;
   }
 }

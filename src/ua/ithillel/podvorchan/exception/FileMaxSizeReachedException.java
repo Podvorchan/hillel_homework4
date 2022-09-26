@@ -1,4 +1,4 @@
-package ua.ithillel.podvorchan;
+package ua.ithillel.podvorchan.exception;
 
 import java.io.IOException;
 

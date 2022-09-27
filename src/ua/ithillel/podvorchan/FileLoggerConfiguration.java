@@ -1,7 +1,6 @@
 package ua.ithillel.podvorchan;
 
 
-
 import ua.ithillel.podvorchan.enums.LoggingLevel;
 
 public class FileLoggerConfiguration extends LoggerConfiguration {
@@ -22,7 +21,7 @@ public class FileLoggerConfiguration extends LoggerConfiguration {
   public void setFileSize(int fileSize) {
     if (fileSize < 1) {
       this.fileSize = 256;
-      System.out.println("Incorrect file size (256)");
+      System.out.println("Incorrect file size ");
     }
 
     this.fileSize = fileSize;

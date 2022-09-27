@@ -3,7 +3,6 @@ package ua.ithillel.podvorchan;
 import static ua.ithillel.podvorchan.NewFileCreator.setNewFileName;
 
 import java.io.File;
-
 import java.io.FileWriter;
 import java.io.IOException;
 

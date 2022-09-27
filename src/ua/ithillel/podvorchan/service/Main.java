@@ -9,16 +9,14 @@ public class Main {
   public static void main(String[] args) {
     FileLogger logger = new FileLogger();
 
-    for (int i = 0; i < 3; i++) {
-      logger.debug("Test1");
-    }
+    logger.debug("test log");
 
     logger.setLoggingLevel(LoggingLevel.INFO);
-    for (int i = 0; i < 3; i++) {
-      logger.debug("Test1");
-    }
-  }
 
+    logger.info("test log");
+  }
 }
+
+
 
 

@@ -3,7 +3,8 @@ package ua.ithillel.podvorchan;
 import java.util.Date;
 import ua.ithillel.podvorchan.enums.LoggingLevel;
 
-public abstract class LoggerConfiguration {
+public class LoggerConfiguration {
+
   protected String fileName;
   protected LoggingLevel loggingLevel;
   protected Date date = new Date();
@@ -18,7 +19,7 @@ public abstract class LoggerConfiguration {
     this.loggingLevel = loggingLevel;
   }
 
-  public void setRecordingFormat(String message,LoggingLevel loggingLevel) {
+  public void setRecordingFormat(String message, LoggingLevel loggingLevel) {
     this.recordingFormat = "|" + date.toString() + "|" + loggingLevel
         + "|" + " Message : " + message;
   }

@@ -13,6 +13,7 @@ public class Record {
   public Record() {
 
   }
+
   public String getName() {
     return name;
   }

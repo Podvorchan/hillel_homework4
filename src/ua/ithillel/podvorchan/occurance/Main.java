@@ -22,7 +22,6 @@ public class Main extends FinderOccurrence {
     return count;
   }
 
-
   public static List<Integer> toList(int[] array) {
     return Arrays.stream(array).boxed().collect(Collectors.toList());
 

@@ -4,20 +4,15 @@ import java.util.LinkedList;
 
 public class CoffeeOrderBoard {
 
-
   LinkedList<Order> orders = new LinkedList<>();
 
-
   public void add(String name) {
-
     orders.add(new Order(orders.size() + 1, name));
   }
-
 
   public Order deliver() {
     return orders.pollFirst();
   }
-
 
   public Order deliver(int number) {
     Order order = find(number);
@@ -34,7 +29,6 @@ public class CoffeeOrderBoard {
     return null;
   }
 
-
   public void draw() {
     System.out.println("=============");
     System.out.println("Num   |  Name");
@@ -46,6 +40,5 @@ public class CoffeeOrderBoard {
       }
     }
   }
-
 
 }

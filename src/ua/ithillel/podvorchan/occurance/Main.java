@@ -11,10 +11,6 @@ public class Main extends FinderOccurrence {
     super(name, occurrence);
   }
 
-  public static void main(String[] args) {
-
-  }
-
   public static int countOccurrence(List<String> strings, String target) {
     int count = 0;
     for (String string : strings) {
@@ -27,11 +23,10 @@ public class Main extends FinderOccurrence {
   }
 
 
-  public static List<Integer> toList(int[] arrey) {
-    return Arrays.stream(arrey).boxed().collect(Collectors.toList());
+  public static List<Integer> toList(int[] array) {
+    return Arrays.stream(array).boxed().collect(Collectors.toList());
 
   }
-
 
   public static List<Integer> findUnique(List<Integer> list) {
     List<Integer> listUnique = new ArrayList<>();
@@ -42,7 +37,6 @@ public class Main extends FinderOccurrence {
     }
     return listUnique;
   }
-
 
   public static void calcOccurrence(List<String> list) {
     List<String> copyOfList = new ArrayList<>(list);
@@ -59,7 +53,6 @@ public class Main extends FinderOccurrence {
     }
     System.out.println();
   }
-
 
   public static List<FinderOccurrence> findOccurance(List<String> strList) {
     List<FinderOccurrence> result = new ArrayList<>();

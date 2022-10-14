@@ -7,9 +7,6 @@ public class Phonebook {
 
   public static ArrayList<Record> arrayList = new ArrayList<>();
 
-  public static void main(String[] args) {
-
-  }
 
   public void addRecord(Record object) {
     arrayList.add(object);

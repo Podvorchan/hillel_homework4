@@ -41,7 +41,6 @@ public class FileNavigator {
     return allowedSize;
   }
 
-
   public void remove(String path) {
     fileStorage.remove(path, fileStorage.get(path));
 
